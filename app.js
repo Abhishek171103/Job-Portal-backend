@@ -1,5 +1,5 @@
 import express from "express";
-import { config } from "dotenv";
+import dotenv from "dotenv";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import { connection } from "./database/connection.js";
@@ -12,7 +12,7 @@ import { newsLetterCron } from "./automation/newsLetterCron.js";
 
 
 const app = express();
-config({ path: "./config/config.env" });
+dotenv.config();
 
 app.use(
     cors({
@@ -40,5 +40,6 @@ app.use("/api/v1/application", applicationRouter);
 newsLetterCron()
 connection();
 app.use(errorMiddleware);
+
 
 export default app;
