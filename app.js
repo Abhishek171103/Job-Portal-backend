@@ -12,6 +12,7 @@ import { newsLetterCron } from "./automation/newsLetterCron.js";
 
 
 const app = express();
+app.set("trust proxy", 1); 
 dotenv.config();
 
 app.use(
@@ -43,3 +44,4 @@ app.use(errorMiddleware);
 
 
 export default app;
+
